@@ -94,6 +94,10 @@ a:hover { color: #7ee7f7; }
 
 /* ---------- hero ---------- */
 .hero { padding: 110px 0 90px; border-bottom: 1px solid var(--border); }
+.headshot {
+  width: 112px; height: 112px; border-radius: 50%; object-fit: cover;
+  border: 2px solid var(--border); margin: 0 0 20px; display: block;
+}
 .eyebrow {
   color: var(--accent); font-size: 14px; font-weight: 700;
   letter-spacing: 1.5px; text-transform: uppercase; margin: 0 0 18px;
