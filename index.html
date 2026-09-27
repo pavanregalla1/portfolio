@@ -85,7 +85,7 @@
             <p>Streaming analytics over synthetic retail events: Spark Structured Streaming into Delta Lake, with fraud-velocity alerting, anomaly scoring and demand forecasting.</p>
             <dl class="case">
               <div><dt>Problem</dt><dd>Spot fraud and forecast demand on fast-moving retail events — without late or bad data corrupting the results.</dd></div>
-              <div><dt>Architecture</dt><dd>Order events &rarr; Kafka &rarr; Spark Structured Streaming (bronze &rarr; silver &rarr; gold, 10-minute watermark, exactly-once) &rarr; Delta Lake + alerts topic. ML models run as a batch sidecar, not inside the stream.</dd></div>
+              <div><dt>Architecture</dt><dd>Order events &rarr; Kafka &rarr; Spark Structured Streaming (bronze &rarr; silver &rarr; gold, 10-minute watermark, checkpointing and deduplication design for exactly-once processing) &rarr; Delta Lake + alerts topic. ML models run as a batch sidecar, not inside the stream.</dd></div>
               <div><dt>Implementation</dt><dd><code>run.sh</code> orchestrates the pipeline. Deterministic velocity guardrails run inline in the streaming job for near-real-time fraud alerts; IsolationForest and GradientBoosting models train and score in batch, writing flags to <code>anomaly_scores.csv</code>; dbt models and tests run on the gold layer.</dd></div>
             </dl>
             <ul class="metrics">
