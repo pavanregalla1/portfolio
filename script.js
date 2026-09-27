@@ -63,13 +63,10 @@
       { threshold: 0.08 }
     );
     revealEls.forEach(function (el) { robs.observe(el); });
-
-
-      // Safety net: reveal everything if the observer never fires.
-        setTimeout(function () {
-                      revealEls.
-                              revealEls.forEach(function (el) { el.classList.add("visible"); });
-                        }, 1500);
+    // Safety net: reveal everything if the observer never fires.
+    setTimeout(function () {
+      revealEls.forEach(function (el) { el.classList.add("visible"); });
+    }, 1500);
   } else {
     revealEls.forEach(function (el) { el.classList.add("visible"); });
   }
