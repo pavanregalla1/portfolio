@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pavan Kumar Regalla — Data Engineer &amp; Data Analyst</title>
-  <meta name="description" content="Pavan Kumar Regalla is a Data Engineer and Data Analyst with nearly five years across AWS and Deloitte. Tested portfolio in streaming, batch and BI: Spark, Kafka, Databricks, Power BI.">
+  <title>Pavan Kumar Regalla — Data Engineer | Data Analyst</title>
+  <meta name="description" content="Pavan Kumar Regalla — Data Engineer | Data Analyst with nearly five years across AWS and Deloitte. Tested portfolio in streaming, batch and BI: Spark, Kafka, Databricks, Power BI.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Pavan Kumar Regalla — Data Engineer &amp; Data Analyst">
+  <meta property="og:title" content="Pavan Kumar Regalla — Data Engineer | Data Analyst">
   <meta property="og:description" content="Tested data pipelines, analytics platforms and decision-ready reporting across streaming, batch and BI workloads. Nearly five years: AWS, Deloitte.">
   <meta property="og:image" content="https://pavanregalla1.github.io/portfolio/og-image.png">
   <meta property="og:url" content="https://pavanregalla1.github.io/portfolio/">
@@ -41,9 +41,9 @@
     <!-- ============ HERO ============ -->
     <section class="hero" id="top" aria-labelledby="hero-title">
       <div class="container">
-        <p class="eyebrow">Jersey City, NJ &middot; Open to full-time roles</p>
+        <p class="eyebrow">Jersey City, NJ — Open to full-time roles across the U.S.</p>
         <h1 id="hero-title">Pavan Kumar Regalla</h1>
-        <p class="role">Data Engineer &amp; Data Analyst</p>
+        <p class="role">Data Engineer | Data Analyst</p>
         <p class="lede">I build tested data pipelines, analytics platforms and decision-ready reporting across streaming, batch and business-intelligence workloads.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#projects">View Projects</a>
@@ -66,7 +66,7 @@
       <div class="container narrow">
         <p class="kicker">Professional profile</p>
         <h2 id="about-title">Pipelines you can trust, numbers you can use.</h2>
-        <p>Data Engineer and Data Analyst with nearly five years across data engineering and analytics — currently at AWS, previously at Deloitte. I build reliable pipelines, enforce data-quality controls, and ship dashboards and analytics-ready datasets that teams actually make decisions on.</p>
+        <p>Data Engineer | Data Analyst with nearly five years across data engineering and analytics — currently at AWS, previously at Deloitte. I build reliable pipelines, enforce data-quality controls, and ship dashboards and analytics-ready datasets that teams actually make decisions on.</p>
         <p>Core stack: Python, SQL, PySpark, Databricks, Kafka, AWS, and Power BI — from streaming ingestion and lakehouse modeling to the executive dashboard.</p>
       </div>
     </section>
@@ -83,6 +83,11 @@
             <p class="project-kicker">Streaming &middot; Fraud detection &middot; ML</p>
             <h3>Real-Time Retail Intelligence — Kafka, Spark &amp; ML Platform</h3>
             <p>Streaming analytics over synthetic retail events: Spark Structured Streaming into Delta Lake, with fraud-velocity alerting, anomaly scoring and demand forecasting.</p>
+            <dl class="case">
+              <div><dt>Problem</dt><dd>Spot fraud and forecast demand on fast-moving retail events — without late or bad data corrupting the results.</dd></div>
+              <div><dt>Architecture</dt><dd>Order events &rarr; Kafka &rarr; Spark Structured Streaming (bronze &rarr; silver &rarr; gold, 10-minute watermark, exactly-once) &rarr; Delta Lake + alerts topic. ML models run as a batch sidecar, not inside the stream.</dd></div>
+              <div><dt>Implementation</dt><dd><code>run.sh</code> orchestrates the pipeline. Deterministic velocity guardrails run inline in the streaming job for near-real-time fraud alerts; IsolationForest and GradientBoosting models train and score in batch, writing flags to <code>anomaly_scores.csv</code>; dbt models and tests run on the gold layer.</dd></div>
+            </dl>
             <ul class="metrics">
               <li><strong>80,628</strong> synthetic streaming events processed</li>
               <li><strong>100%</strong> recall on injected fraud scenarios</li>
@@ -90,9 +95,14 @@
               <li><strong>83.4%</strong> lower forecast MAE than the na&iuml;ve baseline</li>
               <li><strong>24/24</strong> checks green — CI-tested file-replay path (12 dbt + 12 pytest)</li>
             </ul>
+            <figure class="shot">
+              <img src="images/rti-dbt-tests.png" alt="Actual dbt build output showing models and schema tests passing" loading="lazy">
+              <figcaption>Genuine output: dbt build — models plus all schema tests passing (from the repository).</figcaption>
+            </figure>
             <ul class="tags" aria-label="Technologies">
               <li>Apache Spark</li><li>Structured Streaming</li><li>Kafka</li><li>Delta Lake</li><li>Python</li><li>dbt</li><li>Machine Learning</li>
             </ul>
+            <p class="limits"><strong>Limitations:</strong> all data is synthetic. The Kafka path needs Docker and was not executed in this environment — CI tests the file-replay path, which runs the same transforms.</p>
             <a class="btn btn-small" href="https://github.com/pavanregalla1/realtime-retail-intelligence" target="_blank" rel="noopener">View Repository</a>
           </div>
         </article>
@@ -102,6 +112,11 @@
             <p class="project-kicker">Batch &middot; Lakehouse &middot; BI</p>
             <h3>Retail Sales Analytics — Batch Lakehouse &amp; Power BI Pipeline</h3>
             <p>Bronze-to-gold lakehouse on synthetic orders: medallion architecture, star schema, KPI queries and a click-by-click Power BI build guide.</p>
+            <dl class="case">
+              <div><dt>Problem</dt><dd>Turn messy raw e-commerce data into an executive dashboard the business can actually trust.</dd></div>
+              <div><dt>Architecture</dt><dd>Raw CSVs &rarr; bronze (as-is + lineage) &rarr; silver (cleansed) &rarr; gold star schema &rarr; KPI queries &rarr; Power BI.</dd></div>
+              <div><dt>Implementation</dt><dd><code>etl/run_local.py</code> runs the full medallion pipeline in pandas with 10/10 data-quality checks; <code>notebooks/databricks_etl.py</code> ports the same logic to PySpark/Delta Lake; <code>powerbi/BUILD_GUIDE.md</code> builds the <code>.pbix</code> in about 10 minutes.</dd></div>
+            </dl>
             <ul class="metrics">
               <li><strong>60,600</strong> synthetic raw orders in</li>
               <li><strong>56,420</strong> clean fact rows out — <strong>$80.96M</strong> modeled revenue</li>
@@ -109,9 +124,14 @@
               <li><strong>2,113</strong> bad rows quarantined, never silently dropped</li>
               <li>Bronze, silver &amp; gold architecture with star schema and KPI queries</li>
             </ul>
+            <figure class="shot">
+              <img src="images/rsa-architecture.png" alt="Medallion architecture diagram: raw CSVs to bronze, silver, gold star schema, KPI queries and Power BI" loading="lazy">
+              <figcaption>Project diagram: medallion architecture from raw files to the Power BI dashboard (from the repository).</figcaption>
+            </figure>
             <ul class="tags" aria-label="Technologies">
               <li>Python</li><li>PySpark</li><li>Databricks</li><li>Delta Lake</li><li>Power BI</li><li>DAX</li><li>SQL</li>
             </ul>
+            <p class="limits"><strong>Limitations:</strong> all data is synthetic. Dashboard images are matplotlib renders of the gold data, not Power BI screenshots — the genuine <code>.pbix</code> is built by following the guide. The Databricks notebook path was not executed in this environment.</p>
             <a class="btn btn-small" href="https://github.com/pavanregalla1/retail-sales-analytics" target="_blank" rel="noopener">View Repository</a>
           </div>
         </article>
@@ -121,15 +141,25 @@
             <p class="project-kicker">Search &middot; Retrieval &middot; Grounded QA</p>
             <h3>Cloud Analytics Knowledge Search — Hybrid Retrieval &amp; Grounded QA</h3>
             <p>Hybrid TF-IDF + dense retrieval over a synthetic enterprise corpus, with extractive answers, document citations and honest abstention.</p>
+            <dl class="case">
+              <div><dt>Problem</dt><dd>Let analysts ask questions over enterprise documents and get answers they can trust — with citations, or an honest &ldquo;not supported by the knowledge base&rdquo;.</dd></div>
+              <div><dt>Architecture</dt><dd>Synthetic 300-document corpus &rarr; chunking &rarr; TF-IDF sparse + dense (sentence-transformers) hybrid fusion &rarr; extractive answer generation &rarr; Streamlit UI.</dd></div>
+              <div><dt>Implementation</dt><dd>A 40-question eval set measures all three paths (TF-IDF, dense, hybrid). The extractive generator copies answer sentences from retrieved context with document citations and abstains below the evidence threshold. No LLM is called anywhere.</dd></div>
+            </dl>
             <ul class="metrics">
               <li><strong>300</strong> synthetic enterprise documents</li>
               <li><strong>87.5%</strong> recall@1 — hybrid beats TF-IDF (75.0%) and dense (85.0%) alone</li>
               <li>Grounded answers with citations; abstains on unsupported questions</li>
               <li><strong>24</strong> passing tests, 40-question evaluation set</li>
             </ul>
+            <figure class="shot">
+              <img src="images/caks-ui.png" alt="Streamlit UI showing a hybrid retrieval answer with document citations" loading="lazy">
+              <figcaption>Genuine output: Streamlit UI — hybrid retrieval answer with document citations (from the repository).</figcaption>
+            </figure>
             <ul class="tags" aria-label="Technologies">
               <li>Python</li><li>sentence-transformers</li><li>scikit-learn</li><li>Streamlit</li><li>Information Retrieval</li>
             </ul>
+            <p class="limits"><strong>Limitations:</strong> corpus and questions are synthetic. No LLM was executed — answers are extractive, not generated. Bedrock/LangChain are optional integration points, not run here; the Docker image was not built in this environment.</p>
             <a class="btn btn-small" href="https://github.com/pavanregalla1/cloud-analytics-knowledge-search" target="_blank" rel="noopener">View Repository</a>
           </div>
         </article>
