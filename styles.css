@@ -1,5 +1,6 @@
 /* Pavan Kumar Regalla — portfolio. Dark theme, cyan accents. */
 
+
 :root {
   --bg: #0d1117;
   --bg-raised: #161b22;
@@ -16,7 +17,11 @@
   --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
+
 * { box-sizing: border-box; }
+
+[hidden] { display: none !important; }
+
 
 html { scroll-behavior: smooth; }
 
