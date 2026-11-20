@@ -121,6 +121,7 @@ a:hover { color: #7ee7f7; }
 
 /* ---------- sections ---------- */
 .section { padding: 88px 0; border-bottom: 1px solid var(--border); }
+.section, .hero { scroll-margin-top: 84px; }
 .kicker {
   color: var(--accent); font-size: 13px; font-weight: 700;
   letter-spacing: 1.5px; text-transform: uppercase; margin: 0 0 14px;
@@ -180,7 +181,7 @@ a:hover { color: #7ee7f7; }
 .skill-group li { color: var(--muted); font-size: 15px; }
 
 /* ---------- certifications ---------- */
-.certs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 36px; }
+.certs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-bottom: 36px; }
 .cert-card {
   background: var(--bg-card); border: 1px solid var(--border);
   border-radius: var(--radius); padding: 28px 24px;
@@ -202,6 +203,7 @@ a:hover { color: #7ee7f7; }
   border: 1px solid var(--border); border-radius: 10px; font-size: 16px;
 }
 .contact-label { color: var(--faint); font-size: 13px; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
+.contact-list a { overflow-wrap: anywhere; }
 
 /* ---------- footer ---------- */
 .site-footer { padding: 40px 0; }
@@ -225,6 +227,7 @@ a:hover { color: #7ee7f7; }
   .project-card { padding: 28px 22px; }
 }
 @media (max-width: 640px) {
+  .container, .nav { padding: 0 20px; }
   .nav-toggle { display: block; }
   .nav-links {
     display: none; position: absolute; top: 64px; left: 0; right: 0;
